@@ -1,13 +1,14 @@
 # todos/serializers.py
 from rest_framework import serializers
-from .models import Todo
+from .models import UserAccount
 
 
-class TodoSerializer(serializers.ModelSerializer):
+class UserAccountSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
-            'id',
-            'title',
-            'description',
+            'username',
+            'card_number',
+            'pin',
+            'amount',
         )
-        model = Todo
+        model = UserAccount

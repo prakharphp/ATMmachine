@@ -7,7 +7,7 @@ class App extends Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/');
+      const res = await fetch('http://127.0.0.1:8000/api/users/');
       const accounts = await res.json();
       this.setState({
         accounts
@@ -20,14 +20,17 @@ class App extends Component {
   render() {
     return (
       <div>
+      <table border='1'>
+      <tr><th>User</th><th>Card number</th><th>Pin</th><th>Amount</th></tr>
         {this.state.accounts.map(item => (
-          <div key={item.id}>
-            <h1>{item.username}</h1>
-            <h1>{item.card_number}</h1>
-            <h5>{item.pin}</h5>
-            <h5>{item.amount}</h5>
-          </div>
+          <tr key={item.id}>
+            <td>{item.username}</td>
+            <td>{item.card_number}</td>
+            <td>{item.pin}</td>
+            <td>{item.amount}</td>
+          </tr>
         ))}
+      </table>
       </div>
     );
   }
